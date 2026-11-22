@@ -1,0 +1,8 @@
+name = "opasnye-obekty"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-11-22"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "opasnye-obekty-db"
+database_id = "f4784ab1-a73c-4741-97b6-e781d1532042"
