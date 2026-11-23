@@ -1,0 +1,10 @@
+ALTER TABLE objects ADD COLUMN address TEXT NOT NULL DEFAULT '';
+ALTER TABLE objects ADD COLUMN district TEXT NOT NULL DEFAULT '';
+ALTER TABLE objects ADD COLUMN responsible TEXT NOT NULL DEFAULT '';
+ALTER TABLE objects ADD COLUMN inventory_code TEXT NOT NULL DEFAULT '';
+ALTER TABLE objects ADD COLUMN status TEXT NOT NULL DEFAULT 'active';
+ALTER TABLE objects ADD COLUMN description TEXT NOT NULL DEFAULT '';
+ALTER TABLE objects ADD COLUMN qr_token TEXT;
+UPDATE objects SET qr_token=lower(hex(randomblob(16))) WHERE qr_token IS NULL;
+CREATE UNIQUE INDEX idx_objects_qr_token ON objects(qr_token);
+CREATE INDEX idx_objects_type_status ON objects(type,status);
